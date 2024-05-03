@@ -1,22 +1,37 @@
-import React from 'react';
+import React from "react"; //Main React.js library
+import PropType from "prop-types";
 
-const Card = () => {
-    return (
-            <div className="row">
-                <div className="col-3 w-100 p-5">
-                    <div className="card h-100">
-                        <img className="card-img-top" src="https://picsum.photos/100/75" alt="Card image cap" />
-                        <div className="card-body">
-                            <h5 className="card-title">Card title</h5>
-                            <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        </div>
-                        <div className="card-footer">
-                            <a href="#" className="btn btn-primary">Find out more!</a>
-                    </div>
-                </div>
-                </div>
-            </div>
-                ) }
+export const Card = props => {
+	return (
+		<div className="card h-100 mb-sm-4 mb-md-4 mb-lg-4">
+			<img
+				className="card-img-top img"
+				src={props.imageUrl}
+				alt="Card image cap"
+			/>
+			<div className="card-body">
+				<h5 className="card-title text-center">{props.cardTitle}</h5>
+				<p className="card-text text-center">{props.cardDescription}</p>
+			</div>
+			<div className="card-footer text-muted">
+				<div className="text-center">
+					<a
+						href={props.buttonUrl}
+						target="_blank"
+						rel="noreferrer"
+						className="btn btn-primary">
+						{props.buttonLabel}
+					</a>
+				</div>
+			</div>
+		</div>
+	);
+};
 
-//
-export default Card;
+Card.propTypes = {
+	imageUrl: PropType.string,
+	cardTitle: PropType.string,
+	cardDescription: PropType.string,
+	buttonUrl: PropType.string,
+	buttonLabel: PropType.string
+};
